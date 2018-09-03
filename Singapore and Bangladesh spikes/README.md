@@ -1,9 +1,5 @@
----
-output:
-  html_document: default
-  pdf_document: default
----
-#Investigate the spikes in average user return time in Indonesia and Bangladesh on Wikipedia
+
+# Investigate the spikes in average user return time in Indonesia and Bangladesh on Wikipedia
 
 ## Overview
 Ticket: https://phabricator.wikimedia.org/T200111
