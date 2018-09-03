@@ -8,7 +8,7 @@ library(anytime)
 
 
 # Indonesia June 2017 spike on desktop (peak of 9.9 avg days until next access on June 22, 2017)
-fig_path <- file.path("figures/Indonesia/June 2017 peak")
+fig_path <- file.path("figures/Indonesia/June_2017_peak")
 plot_resolution <- 192
 
 
@@ -227,7 +227,7 @@ lapply(seq(as.Date("2017-12-20"), as.Date("2017-12-24"), by=1), function(x)
 
 
 ##Indonesia February 2018 spike on desktop (peak of 8.6 avg days until next access on February 09, 2018)
-fig_path <- file.path("figures/Indonesia/Feb 2018 peak")
+fig_path <- file.path("figures/Indonesia/Feb_2018_peak")
 plot_resolution <- 192
 
 id_data_feb2018 <- rbind(readr::read_rds("data/id_return_frequency_feb18.rds"))
@@ -333,7 +333,7 @@ lapply(seq(as.Date("2018-02-07"), as.Date("2018-02-11"), by=1), function(x)
 })
 
 #Indonesia October 2017: Look at non-spike time for comparison.
-fig_path <- file.path("figures/Indonesia/Oct 2017 normal")
+fig_path <- file.path("figures/Indonesia/Oct_2017_normal")
 plot_resolution <- 192
 
 id_data_oct2017 <- rbind(readr::read_rds("data/id_return_frequency_oct17.rds"))
@@ -439,7 +439,7 @@ lapply(seq(as.Date("2017-10-13"), as.Date("2017-10-17"), by=1), function(x)
 
 
 # Bangladesh
-fig_path <- file.path("figures/Bangladesh/January 2017 peak")
+fig_path <- file.path("figures/Bangladesh/January_2017_peak")
 plot_resolution <- 192
 
 # Bangladesh January 2017 spike on desktop (peak of 13 avg days until next access on Jan 27, 2017)
@@ -546,7 +546,7 @@ lapply(seq(as.Date("2017-01-25"), as.Date("2017-01-29"), by=1), function(x)
 })
 
 # Bangladesh December 2017 spike on mobile web (peak of 7.67 avg number of days until next access on December 30, 2017 )
-fig_path <- file.path("figures/Bangladesh/December 2017 peak")
+fig_path <- file.path("figures/Bangladesh/December_2017_peak")
 plot_resolution <- 192
 
 
@@ -653,7 +653,7 @@ lapply(seq(as.Date("2017-12-28"), as.Date("2018-01-01"), by=1), function(x)
 })
 
 # Bangladesh April 2018 spike on mobile web (peak of 7.6 occuring on 2018-04-10)
-fig_path <- file.path("figures/Bangladesh/April 2018 peak")
+fig_path <- file.path("figures/Bangladesh/April_2018_peak")
 plot_resolution <- 192
 
 bd_data_apr2018 <- rbind(readr::read_rds("data/bd_return_frequency_apr18.rds"))
@@ -759,7 +759,7 @@ lapply(seq(as.Date("2018-04-08"), as.Date("2018-04-12"), by=1), function(x)
 })
 
 #Bangladesh October 2017: Look at non-spike time on mobile web for comparison.
-fig_path <- file.path("figures/Bangladesh/November 2017 normal")
+fig_path <- file.path("figures/Bangladesh/November_2017_normal")
 plot_resolution <- 192
 
 bd_data_nov2017 <- rbind(readr::read_rds("data/bd_return_frequency_nov17.rds"))

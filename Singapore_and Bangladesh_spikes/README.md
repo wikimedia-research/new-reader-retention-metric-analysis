@@ -19,10 +19,10 @@ In Indonesia, all of the identified avg return time spikes occurred on desktop. 
 
 See histograms for June 22, 2017 (peak date) and June 24, 2017 below:
 
-![ ](figures/Indonesia/June 2017 peak/id_return_2017-06-22.png)
+![ ](figures/Indonesia/June_2017_peak/id_return_2017-06-22.png)
 
 
-![ ](figures/Indonesia/June 2017 peak/id_return_2017-06-24.png)
+![ ](figures/Indonesia/June_2017_peak/id_return_2017-06-24.png)
 
 
 
@@ -30,18 +30,18 @@ See histograms for June 22, 2017 (peak date) and June 24, 2017 below:
 
 In Bangladesh, I investigated the spikes on January 27, 2017 (13 days on desktop), December 30, 2017 (7.7 days on mobile, and April 10, 2018 (7.6 days on mobile). Compared to Indonesia, histograms for days around each of these peaks showed a higher return rate on day 1 and a consistent decline in returns on the following days (2 to 31). See histograms for April 10, 2018 (peak date) and April 12, 2018 below as an example.
 
-![ ](figures/Bangladesh/April 2018 peak/bd_return_2018-04-10.png)
+![ ](figures/Bangladesh/April_2018_peak/bd_return_2018-04-10.png)
 
-![ ](figures/Bangladesh/April 2018 peak/bd_return_2018-04-12.png)
+![ ](figures/Bangladesh/April_2018_peak/bd_return_2018-04-12.png)
 
 ## Break down by os, browser and project
 
 I also broke down each histogram by project (specifically looking at non-wikipedia projects, os, and browser type). The breakdowns appear equally distributed indicating that the increases in average return time during these times are a result of real user behavior and not an artifact. Histograms for June 22, 2017 in Indonesia below:
 
-![ ](figures/Indonesia/June 2017 peak/id_return_bybrowser_2017-06-22.png)
+![ ](figures/Indonesia/June_2017_peak/id_return_bybrowser_2017-06-22.png)
 
-![ ](figures/Indonesia/June 2017 peak/id_return_byOs_2017-06-22.png)
+![ ](figures/Indonesia/June_2017_peak/id_return_byOs_2017-06-22.png)
 
-![ ](figures/Indonesia/June 2017 peak/id_return_byproject_2017-06-22.png)
+![ ](figures/Indonesia/June_2017_peak/id_return_byproject_2017-06-22.png)
 
 
