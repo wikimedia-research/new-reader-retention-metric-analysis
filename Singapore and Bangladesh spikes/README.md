@@ -1,4 +1,7 @@
-
+---
+output:
+  html_document: default
+---
 # Investigate the spikes in average user return time in Indonesia and Bangladesh on Wikipedia
 
 ## Overview
