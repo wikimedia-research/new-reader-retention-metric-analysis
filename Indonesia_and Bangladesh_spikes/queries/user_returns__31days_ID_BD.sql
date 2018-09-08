@@ -12,7 +12,7 @@ AND unix_timestamp(wmf_last_access, 'dd-MMM-yyyy') < 1527465600 -- 05/28/2018 @ 
 AND ( (year = 2016) OR (year = 2017) OR (year = 2018) ) 
 AND (access_method = 'desktop' OR access_method = 'mobile web') 
 AND project_class = 'wikipedia' 
---isolate to regional countries with Singapore switchover
+--isolate to Indonesia and Bangladesh countries 
 AND country_code IN ("BD", "ID")
 -- avg returns within 31 days
 AND unix_timestamp(CONCAT(year,'-',LPAD(month,2,'0'),'-',LPAD(day,2,'0')), 'yyyy-MM-dd') < (unix_timestamp(wmf_last_access, 'dd-MMM-yyyy') + 2764800) -- 2764800 seconds = 32 days
