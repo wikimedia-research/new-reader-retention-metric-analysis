@@ -292,3 +292,71 @@ readr::write_rds(wikidata_return_frequency_Jun18, "wikidata_return_frequency_Jun
 #LOCAL
 system("scp mneisler@stat5:/home/mneisler/wikidata_return_frequency_Jun18.rds wikidata_return_frequency_Jun18.rds")
 
+#Review histograms around external events to see impact on user return time.
+#Page Preview rollout 
+
+#Remotely from Stat005. 
+
+#Query next return data 5 days before and after rollout date, April 18, 2018 on English Wikipedia on desktop
+start_date <- 1523491200 ## 04/12/2018 @ 12:00am (UTC) 5 days prior
+end_date <- 1524355200 ## 04/22/2018 @ 12:00am (UTC) 5 days after
+
+en_return_frequency_Apr18 <- do.call(rbind, lapply(seq(start_date, end_date, by=86400), function(date) {
+  cat("Fetching webrequest data from ", as.character(date), "\n")
+  
+  query <- paste("
+                 SELECT '",date,"' AS date, user_agent_map['os_family'] as os_family, user_agent_map['browser_family'] as browser_family,
+                 (unix_timestamp(CONCAT(year,'-',LPAD(month,2,'0'),'-',LPAD(day,2,'0')), 'yyyy-MM-dd') 
+                 - unix_timestamp(wmf_last_access, 'dd-MMM-yyyy'))/86400 AS days_till_next_access, 
+                 COUNT (*) AS returns_each_day
+                 FROM tbayer.webrequest_extract_bak
+                 WHERE unix_timestamp(wmf_last_access, 'dd-MMM-yyyy') = ", date, "
+                 AND year = 2018 
+                 AND access_method = 'desktop'
+                 AND project_class = 'wikipedia'
+                 AND project = 'en'
+                 AND unix_timestamp(CONCAT(year,'-',LPAD(month,2,'0'),'-',LPAD(day,2,'0')), 'yyyy-MM-dd') < (unix_timestamp(wmf_last_access, 'dd-MMM-yyyy') + 2764800) -- 2764800 seconds = 32 days
+                 AND unix_timestamp(CONCAT(year,'-',LPAD(month,2,'0'),'-',LPAD(day,2,'0')), 'yyyy-MM-dd') >= (unix_timestamp(wmf_last_access, 'dd-MMM-yyyy') + 86400) -- 86400 seconds = 1 day
+                 GROUP BY (unix_timestamp(CONCAT(year,'-',LPAD(month,2,'0'),'-',LPAD(day,2,'0')), 'yyyy-MM-dd') - unix_timestamp(wmf_last_access, 'dd-MMM-yyyy'))/86400, user_agent_map['os_family'], user_agent_map['browser_family']
+                 ;") 
+  cat(query)
+  results <- wmf::query_hive(query)
+  return(results)
+}))
+
+readr::write_rds(en_return_frequency_Apr18, "en_return_frequency_Apr18.rds", "gz")
+
+#LOCAL
+system("scp mneisler@stat7:/home/mneisler/en_return_frequency_Apr18.rds en_return_frequency_Apr18.rds")
+
+#Query next return data 5 days before and after WPO shutdown in Angola, June 29, 2018 on English Wikipedia on desktop
+start_date <- 1529798400 ## 06/24/2018 @ 12:00am (UTC) 5 days prior
+end_date <- 1530662400 ## 07/04/2018 @ 12:00am (UTC) 5 days after
+
+ao_return_frequency_Jun18 <- do.call(rbind, lapply(seq(start_date, end_date, by=86400), function(date) {
+  cat("Fetching webrequest data from ", as.character(date), "\n")
+  
+  query <- paste("
+                 SELECT '",date,"' AS date, access_method, user_agent_map['os_family'] as os_family, user_agent_map['browser_family'] as browser_family,
+                 (unix_timestamp(CONCAT(year,'-',LPAD(month,2,'0'),'-',LPAD(day,2,'0')), 'yyyy-MM-dd') 
+                 - unix_timestamp(wmf_last_access, 'dd-MMM-yyyy'))/86400 AS days_till_next_access, 
+                 COUNT (*) AS returns_each_day
+                 FROM tbayer.webrequest_extract_bak
+                 WHERE unix_timestamp(wmf_last_access, 'dd-MMM-yyyy') = ", date, "
+                 AND year = 2018
+                 AND project_class = 'wikipedia'
+                 AND (access_method = 'desktop' OR access_method = 'mobile web') 
+                 AND country_code = 'AO' 
+                 AND unix_timestamp(CONCAT(year,'-',LPAD(month,2,'0'),'-',LPAD(day,2,'0')), 'yyyy-MM-dd') < (unix_timestamp(wmf_last_access, 'dd-MMM-yyyy') + 2764800) -- 2764800 seconds = 32 days
+                 AND unix_timestamp(CONCAT(year,'-',LPAD(month,2,'0'),'-',LPAD(day,2,'0')), 'yyyy-MM-dd') >= (unix_timestamp(wmf_last_access, 'dd-MMM-yyyy') + 86400) -- 86400 seconds = 1 day
+                 GROUP BY access_method, (unix_timestamp(CONCAT(year,'-',LPAD(month,2,'0'),'-',LPAD(day,2,'0')), 'yyyy-MM-dd') - unix_timestamp(wmf_last_access, 'dd-MMM-yyyy'))/86400, user_agent_map['os_family'], user_agent_map['browser_family']
+                 ;") 
+  cat(query)
+  results <- wmf::query_hive(query)
+  return(results)
+}))
+
+readr::write_rds(ao_return_frequency_Jun18, "ao_return_frequency_Jun18.rds", "gz")
+
+#LOCAL
+system("scp mneisler@stat7:/home/mneisler/ao_return_frequency_Jun18.rds ao_return_frequency_Jun18.rds")

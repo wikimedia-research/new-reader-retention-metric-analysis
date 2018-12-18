@@ -16,14 +16,6 @@ user_returns_31days_bycountry$last_seen_date <- as.Date(user_returns_31days_byco
 user_returns_31days_bycountry <-  user_returns_31days_bycountry %>% filter(avg_days_till_next_access != 3.000000) 
 
 
-peak_views<- user_returns_31days_bycountry %>%
-  filter(country == "ID",
-         access_method == 'desktop',
-         last_seen_date >= "2017-06-01" & last_seen_date <= "2017-07-01")  %>%
-  arrange(last_seen_date)
-
-
-
 #Replace country codes with names (currently just replacing countries used in analysis)
 user_returns_31days_bycountry$country  <- plyr::mapvalues(
   user_returns_31days_bycountry$country, from=c("BV","IN", "TT", "MT", "TW", "CC", "FK", "NF", "SH", "SJ", "US",
@@ -121,6 +113,34 @@ avg_returns_desktop_1month <- user_returns_31days_bycountry %>%
   ggsave(filename="user_returns_31days_1month_mobileweb.png", plot = p, path = fig_path, units = "in", dpi = plot_resolution, height = 6, width = 10, limitsize = FALSE)  
   rm(p)
   
+#Review average returns within 31 days in Angola around June 2018 (Around WP0 Drop)
+  
+  user_returns_31days_angola <- read.delim("data/user_returns_allwikis_31days_Angola_bybrowser.tsv", sep = "\t", stringsAsFactors =FALSE)
+  user_returns_31days_angola$last_seen_date <- as.Date(user_returns_31days_angola$last_seen_date, format = "%d-%b-%Y")
+  
+  ao_wikipedia_avg_returns <- user_returns_31days_angola %>%
+    mutate(browser_family=ifelse(browser_family %in% c('Chrome Mobile', 'Chrome', 'Android', 'Samsung Internet', 'Mobile Safari', 'Opera Mini'), browser_family, 'Other')) %>%
+    filter(browser_family != 'Other',
+           last_seen_date >= "2018-06-01" & last_seen_date <= "2018-09-30") #filter out non-primary browsers to make plot more readable.
+  
+  #break out by browser family
+  p <- ggplot(ao_wikipedia_avg_returns, aes(x = last_seen_date, y = avg_days_till_next_access, color = browser_family)) +
+    geom_line() + 
+    geom_vline(xintercept = as.numeric(as.Date("2018-06-29")),
+               linetype = "dashed", color = "blue") +
+    geom_text(aes(x=as.Date('2018-06-29'), y=7, label="WPO Shutdown (June 29, 2018)"), size=3, vjust = -1.2, angle = 90, color = "black") +
+    scale_y_continuous("Average number of days until next access", labels = polloi::compress) +
+    scale_x_date("Last access date", labels = date_format("%Y-%m-%d"), date_breaks = "5 days")  +
+    labs(title = "Average user returns within 31 days on all Wikipedia projects from Angola by browser") +
+    ggthemes::theme_tufte(base_size = 12, base_family = "Gill Sans") +
+    theme(axis.text.x=element_text(angle = 45, hjust = 1),
+          panel.grid = element_line("gray70"),
+          legend.position="bottom")
+  
+  ggsave(filename=paste0("user_returns_31days_Angola_browserv2.png"), plot = p, path = fig_path, units = "in", dpi = plot_resolution, height = 6, width = 10, limitsize = FALSE)  
+  rm(p)
+
+  
   
 # Time series of the average next return time (within 31 days) by project (language) [Only Wikipedia]
 
@@ -128,6 +148,13 @@ user_returns_31days_byproject <- read.delim("data/user_returns_allwikis_31days_b
 user_returns_31days_byproject$last_seen_date <- as.Date(user_returns_31days_byproject$last_seen_date, format = "%d-%b-%Y")
 #filter out malformed data point on 3.00000 in Japan on December 31, 2018 on mobile web. 
 user_returns_31days_byproject <-  user_returns_31days_byproject %>% filter(avg_days_till_next_access != 3.000000) 
+
+peak_views<- user_returns_31days_byproject %>%
+  filter(project == "en",
+         access_method == 'desktop',
+         last_seen_date >= "2017-12-01" & last_seen_date <= "2017-12-30")  %>%
+  arrange(last_seen_date)
+
 
 #Create lists of largest and smallest sized wiki based on Wiki Segmentation database
 
@@ -193,6 +220,28 @@ p <- ggplot(smallsizedwikis_31days, aes(x = last_seen_date, y = avg_days_till_ne
 ggsave(filename= "user_returns_31days_smallwikipedias.png", plot = p, path = fig_path, units = "in", dpi = plot_resolution, height = 6, width = 10, limitsize = FALSE)  
 rm(p)
 
+#Look at English Wikipedia on desptop around page preview rollout date:
+
+en_wikipedia_user_returns_april18 <- user_returns_31days_byproject %>%
+  filter(project == "en",
+         access_method == 'desktop',
+         last_seen_date >= "2018-03-01" & last_seen_date <= "2018-06-30")  %>%
+  arrange(last_seen_date)
+
+p <- ggplot(en_wikipedia_user_returns_april18, aes(x = last_seen_date, y = avg_days_till_next_access)) +
+  geom_line(color = 'red') + 
+  geom_vline(xintercept = as.numeric(as.Date("2018-04-18")),
+             linetype = "dashed", color = "blue") +
+  geom_text(aes(x=as.Date('2018-04-18'), y=5.5, label="page preview rollout (April 18, 2018)"), size=3, vjust = -1.2, angle = 90, color = "black") +
+  scale_y_continuous("Average number of days until next access", labels = polloi::compress) +
+  scale_x_date("Last access date", labels = date_format("%Y-%m-%d"), date_breaks = "3 days")  +
+  labs(title = "Average user returns within 31 days on en.wikipedia desktop around page preview rollout")+
+  ggthemes::theme_tufte(base_size = 12, base_family = "Gill Sans") +
+  theme(axis.text.x=element_text(angle = 45, hjust = 1),
+        panel.grid = element_line("gray70"))
+
+ggsave(filename= "user_returns_31days_pagepreviewevent.png", plot = p, path = fig_path, units = "in", dpi = plot_resolution, height = 6, width = 10, limitsize = FALSE)  
+rm(p)
 
 # Time series of the average next return time (within 31 days) by project class (Wikipedia, Commons, Wikidata, etc)
 
