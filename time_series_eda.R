@@ -46,7 +46,7 @@ plot_31day_returns_bycountry <- function(x) {
   p <- ggplot(subset(user_returns_31days_bycountry, country == x), aes(x = last_seen_date, y = avg_days_till_next_access, color = access_method)) +
     geom_line() + 
     scale_y_continuous("Average number of days until next access", labels = polloi::compress) +
-    scale_x_date("Last access date", labels = date_format("%Y-%m-%d"), date_breaks = "1 month")  +
+    scale_x_date("Last access date", labels = (date_format("%Y-%m-%d"), date_breaks = "1 month")  +
     labs(title = paste("Average user returns within 31 days on all Wikipedia projects from", x)) +
     ggthemes::theme_tufte(base_size = 12, base_family = "Gill Sans") +
     theme(axis.text.x=element_text(angle = 45, hjust = 1),
@@ -55,6 +55,8 @@ plot_31day_returns_bycountry <- function(x) {
   ggsave(filename=paste0("user_returns_31days_",x,".png"), plot = p, path = fig_path, units = "in", dpi = plot_resolution, height = 6, width = 10, limitsize = FALSE)  
   rm(p)
 }
+
+
 
 #Generate plots for countries of interest
 lapply(largewikicountries, plot_31day_returns_bycountry)
@@ -140,6 +142,54 @@ avg_returns_desktop_1month <- user_returns_31days_bycountry %>%
   ggsave(filename=paste0("user_returns_31days_Angola_browserv2.png"), plot = p, path = fig_path, units = "in", dpi = plot_resolution, height = 6, width = 10, limitsize = FALSE)  
   rm(p)
 
+
+  #Review average returns within 31 days in Senegal around Feb 7, 2018
+  #By access method
+  
+
+  p <- ggplot(subset(user_returns_31days_bycountry, country == 'SN'), aes(x = last_seen_date, y = avg_days_till_next_access, color = access_method)) +
+    geom_line() + 
+    geom_vline(xintercept = as.numeric(as.Date("2018-02-07")),
+                             linetype = "dashed", color = "blue") +
+    geom_text(aes(x=as.Date('2018-02-07'), y=7, label="WPO Shutdown (Feb 7, 2018)"), size=3, vjust = -1.2, angle = 90, color = "black") +
+    scale_y_continuous("Average number of days until next access", labels = polloi::compress) +
+    scale_x_date("Last access date", labels = date_format("%Y-%m-%d"), date_breaks = "1 month")  +
+    labs(title ="Average user returns within 31 days on all Wikipedia projects from Senegal") +
+    ggthemes::theme_tufte(base_size = 12, base_family = "Gill Sans") +
+    theme(axis.text.x=element_text(angle = 45, hjust = 1),
+          panel.grid = element_line("gray70"))
+  
+  ggsave(filename="user_returns_31days_Senegal.png", plot = p, path = fig_path, units = "in", dpi = plot_resolution, height = 6, width = 10, limitsize = FALSE)  
+  rm(p)
+  
+  #break out by browser family
+  user_returns_31days_senegal <- read.delim("data/user_returns_allwikis_31days_Senegal_bybrowser.tsv", sep = "\t", stringsAsFactors =FALSE)
+  user_returns_31days_senegal$last_seen_date <- as.Date(user_returns_31days_senegal$last_seen_date, format = "%d-%b-%Y")
+  
+  sn_wikipedia_avg_returns <- user_returns_31days_senegal %>%
+    mutate(browser_family=ifelse(browser_family %in% c('Chrome Mobile', 'Mobile Safari', 'Android', 'Chrome', 'IE Mobile', 'Chrome Mobile iOS', 'Firefox Mobile' ), browser_family, 'Other')) %>%
+    filter(browser_family != 'Other',
+           last_seen_date >= "2018-01-01" & last_seen_date <= "2018-03-30") #filter out non-primary browsers to make plot more readable.
+  
+ 
+  p <- ggplot( sn_wikipedia_avg_returns, aes(x = last_seen_date, y = avg_days_till_next_access, color = browser_family)) +
+    geom_line() + 
+    geom_vline(xintercept = as.numeric(as.Date("2018-02-07")),
+               linetype = "dashed", color = "blue") +
+    geom_text(aes(x=as.Date('2018-02-07'), y=7, label="WPO Shutdown (Feb 7, 2018)"), size=3, vjust = -1.2, angle = 90, color = "black") +
+    scale_y_continuous("Average number of days until next access", labels = polloi::compress) +
+    scale_x_date("Last access date", labels = date_format("%Y-%m-%d"), date_breaks = "5 days")  +
+    labs(title = "Average user returns within 31 days on all Wikipedia projects from Senegal by browser") +
+    ggthemes::theme_tufte(base_size = 12, base_family = "Gill Sans") +
+    theme(axis.text.x=element_text(angle = 45, hjust = 1),
+          panel.grid = element_line("gray70"),
+          legend.position="bottom")
+  
+  ggsave(filename=paste0("user_returns_31days_Senegal_browser.png"), plot = p, path = fig_path, units = "in", dpi = plot_resolution, height = 6, width = 10, limitsize = FALSE)  
+  rm(p)
+  
+  
+  
   
   
 # Time series of the average next return time (within 31 days) by project (language) [Only Wikipedia]
