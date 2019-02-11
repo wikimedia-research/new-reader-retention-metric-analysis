@@ -83,8 +83,8 @@ lapply(seq(as.Date("2018-02-26"), as.Date("2018-03-04"), by=1), plot_return_hist
 
 #Create daily histograms of returns without breakdown
 library(magick)
-setwd("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/march_2018_de/gif")
-fig_path <- file.path("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/march_2018_de/gif")
+setwd("~/Code/reader-retention-data-exploration/figures/return_histograms/march_2018_de/gif")
+fig_path <- file.path("~/Code/reader-retention-data-exploration/figures/return_histograms/march_2018_de/gif")
 
 
 lapply(seq(as.Date("2018-02-26"), as.Date("2018-03-04"), by=1), plot_return_histograms, df =return_frequency_Mar18)
@@ -110,8 +110,8 @@ lapply(seq(as.Date("2017-07-05"), as.Date("2017-07-11"), by=1), plot_return_hist
 
 
 #Create daily histograms of returns without breakdown
-setwd("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/july_2017_us/gif")
-fig_path <- file.path("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/july_2017_us/gif")
+setwd("~/Code/reader-retention-data-exploration/figures/return_histograms/july_2017_us/gif")
+fig_path <- file.path("~/Code/reader-retention-data-exploration/figures/return_histograms/july_2017_us/gif")
 
 lapply(seq(as.Date("2017-07-05"), as.Date("2017-07-11"), by=1), plot_return_histograms, df =return_frequency_Jul17)
 
@@ -135,8 +135,8 @@ es_return_frequency_Dec17 <- rbind(readr::read_rds("data/es_return_frequency_dec
 
 #Create daily histograms of returns with breakdown
 #by browser family
-setwd("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/dec_2017_es/browser_family")
-fig_path <- file.path("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/dec_2017_es/browser_family")
+setwd("~/Code/reader-retention-data-exploration/figures/return_histograms/dec_2017_es/browser_family")
+fig_path <- file.path("~/Code/reader-retention-data-exploration/figures/return_histograms/dec_2017_es/browser_family")
 
 
 lapply(seq(as.Date("2017-12-18"), as.Date("2017-12-24"), by=1), plot_return_histograms_breakdown, df =es_return_frequency_Dec17, fill_var = "browser_family")
@@ -146,8 +146,8 @@ lapply(seq(as.Date("2017-12-18"), as.Date("2017-12-24"), by=1), plot_return_hist
 system("convert -delay 80 *.png dec_2017_es_bybrowser.gif")
 
 #by os family
-setwd("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/dec_2017_es/os_family")
-fig_path <- file.path("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/dec_2017_es/os_family")
+setwd("~/Code/reader-retention-data-exploration/figures/return_histograms/dec_2017_es/os_family")
+fig_path <- file.path("~/Code/reader-retention-data-exploration/figures/return_histograms/dec_2017_es/os_family")
 
 
 lapply(seq(as.Date("2017-12-18"), as.Date("2017-12-24"), by=1), plot_return_histograms_breakdown, df =es_return_frequency_Dec17, fill_var = "os_family")
@@ -159,8 +159,8 @@ system("convert -delay 80 *.png dec_2017_es_byos.gif")
 
 
 #by project
-setwd("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/dec_2017_es/project")
-fig_path <- file.path("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/dec_2017_es/project")
+setwd("~/Code/reader-retention-data-exploration/figures/return_histograms/dec_2017_es/project")
+fig_path <- file.path("~/Code/reader-retention-data-explorationfigures/return_histograms/dec_2017_es/project")
 
 lapply(seq(as.Date("2017-12-18"), as.Date("2017-12-24"), by=1), plot_return_histograms_breakdown, df =es_return_frequency_Dec17, fill_var = "project")
 
@@ -171,8 +171,8 @@ system("convert -delay 80 *.png dec_2017_es_byproject.gif")
 
 
 #Create daily histograms of returns without breakdown
-setwd("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/dec_2017_es/total")
-fig_path <- file.path("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/dec_2017_es/total")
+setwd("~/Code/reader-retention-data-exploration/figures/return_histograms/dec_2017_es/total")
+fig_path <- file.path("~/Code/reader-retention-data-exploration/figures/return_histograms/dec_2017_es/total")
 
 lapply(seq(as.Date("2017-12-18"), as.Date("2017-12-24"), by=1), plot_return_histograms, df =es_return_frequency_Dec17)
 
@@ -198,8 +198,8 @@ lapply(seq(as.Date("2017-12-18"), as.Date("2017-12-24"), by=1), plot_return_hist
 lapply(seq(as.Date("2017-12-18"), as.Date("2017-12-24"), by=1), plot_return_histograms_breakdown, df =fr_return_frequency_Dec17, fill_var = "browser_family")
 
 #Create daily histograms of returns without breakdown
-setwd("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/dec_2017_fr/gif")
-fig_path <- file.path("~/Code/new-reader-retention-metric-analysis//figures/return_histograms/dec_2017_fr/gif")
+setwd("~/Code/reader-retention-data-exploration/figures/return_histograms/dec_2017_fr/gif")
+fig_path <- file.path("~/Code/reader-retention-data-exploration/figures/return_histograms/dec_2017_fr/gif")
 
 lapply(seq(as.Date("2017-12-18"), as.Date("2017-12-24"), by=1), plot_return_histograms, df =fr_return_frequency_Dec17)
 
@@ -226,8 +226,8 @@ lapply(seq(as.Date("2017-12-18"), as.Date("2017-12-24"), by=1), plot_return_hist
 
 
 #Create daily histograms of returns without breakdown
-setwd("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/dec_2017_us/gif")
-fig_path <- file.path("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/dec_2017_us/gif")
+setwd("~/Code/reader-retention-data-exploration/figures/return_histograms/dec_2017_us/gif")
+fig_path <- file.path("~/Code/reader-retention-data-exploration/figures/return_histograms/dec_2017_us/gif")
 
 lapply(seq(as.Date("2017-12-18"), as.Date("2017-12-24"), by=1), plot_return_histograms, df =us_return_frequency_Dec17)
 
@@ -235,7 +235,6 @@ lapply(seq(as.Date("2017-12-18"), as.Date("2017-12-24"), by=1), plot_return_hist
 # convert the .png files to one .gif file using ImageMagick.
 
 system("convert -delay 80 *.png dec_2017_usv2.gif")
-
 
 
 
@@ -255,8 +254,8 @@ lapply(seq(as.Date("2017-09-05"), as.Date("2017-09-11"), by=1), plot_return_hist
 
 
 #Create daily histograms of returns without breakdown
-setwd("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/sept_2017_wikisource/gif")
-fig_path <- file.path("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/sept_2017_wikisource/gif")
+setwd("~/Code/reader-retention-data-exploration/figures/return_histograms/sept_2017_wikisource/gif")
+fig_path <- file.path("~/Code/reader-retention-data-exploration/figures/return_histograms/sept_2017_wikisource/gif")
 
 lapply(seq(as.Date("2017-09-05"), as.Date("2017-09-11"), by=1), plot_return_histograms, df =wikisource_return_frequency_Sept17)
 
@@ -284,8 +283,8 @@ lapply(seq(as.Date("2017-07-09"), as.Date("2017-07-15"), by=1), plot_return_hist
 
 
 #Create daily histograms of returns without breakdown
-setwd("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/july_2017_wikisource/gif")
-fig_path <- file.path("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/july_2017_wikisource/gif")
+setwd("~/Code/reader-retention-data-exploration/figures/return_histograms/july_2017_wikisource/gif")
+fig_path <- file.path("~/Code/reader-retention-data-exploration/figures/return_histograms/july_2017_wikisource/gif")
 
 lapply(seq(as.Date("2017-07-09"), as.Date("2017-07-15"), by=1), plot_return_histograms, df =wikisource_return_frequency_Jul17)
 
@@ -312,8 +311,8 @@ lapply(seq(as.Date("2018-07-15"), as.Date("2018-07-21"), by=1), plot_return_hist
 
 
 #Create daily histograms of returns without breakdown
-setwd("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/july_2018_wikisource/gif")
-fig_path <- file.path("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/july_2018_wikisource/gif")
+setwd("~/Code/reader-retention-data-exploration/figures/return_histograms/july_2018_wikisource/gif")
+fig_path <- file.path("~/Code/reader-retention-data-exploration/figures/return_histograms/july_2018_wikisource/gif")
 
 
 lapply(seq(as.Date("2018-07-15"), as.Date("2018-07-21"), by=1), plot_return_histograms, df =wikisource_return_frequency_Jul18)
@@ -340,8 +339,8 @@ lapply(seq(as.Date("2018-06-27"), as.Date("2018-07-03"), by=1), plot_return_hist
 
 
 #Create daily histograms of returns without breakdown
-setwd("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/june_2018_wikidata/gif")
-fig_path <- file.path("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/june_2018_wikidata/gif")
+setwd("~/Code/reader-retention-data-exploration/figures/return_histograms/june_2018_wikidata/gif")
+fig_path <- file.path("~/Code/reader-retention-data-exploration/figures/return_histograms/june_2018_wikidata/gif")
 
 lapply(seq(as.Date("2018-06-27"), as.Date("2018-07-03"), by=1), plot_return_histograms, df =wikidata_return_frequency_Jun18)
 
@@ -374,8 +373,8 @@ lapply(seq(as.Date("2018-08-13"), as.Date("2018-08-19"), by=1), plot_return_hist
 
 
 #Create daily histograms of returns without breakdown
-setwd("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/aug_2018_bd/gif")
-fig_path <- file.path("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/aug_2018_bd/gif")
+setwd("~/Code/reader-retention-data-exploration/figures/return_histograms/aug_2018_bd/gif")
+fig_path <- file.path("~/Code/reader-retention-data-exploration/figures/return_histograms/aug_2018_bd/gif")
 
 lapply(seq(as.Date("2018-08-13"), as.Date("2018-08-19"), by=1), plot_return_histograms, df =bd_return_frequency_Aug18)
 
@@ -406,8 +405,8 @@ lapply(seq(as.Date("2018-08-12"), as.Date("2018-08-18"), by=1), plot_return_hist
 
 
 #Create daily histograms of returns without breakdown
-setwd("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/aug_2018_bd_mw/gif")
-fig_path <- file.path("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/aug_2018_bd_mw/gif")
+setwd("~/Code/reader-retention-data-exploration/figures/return_histograms/aug_2018_bd_mw/gif")
+fig_path <- file.path("~/Code/reader-retention-data-exploration/figures/return_histograms/aug_2018_bd_mw/gif")
 
 
 lapply(seq(as.Date("2018-08-12"), as.Date("2018-08-18"), by=1), plot_return_histograms, df =bd_return_frequency_Aug18_mw)
@@ -435,8 +434,8 @@ lapply(seq(as.Date("2018-08-04"), as.Date("2018-08-10"), by=1), plot_return_hist
 
 
 #Create daily histograms of returns without breakdown
-setwd("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/aug_2018_id/gif")
-fig_path <- file.path("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/aug_2018_id/gif")
+setwd("~/Code/reader-retention-data-exploration/figures/return_histograms/aug_2018_id/gif")
+fig_path <- file.path("~/Code/reader-retention-data-exploration/figures/return_histograms/aug_2018_id/gif")
 
 
 lapply(seq(as.Date("2018-08-04"), as.Date("2018-08-10"), by=1), plot_return_histograms, df =id_return_frequency_Aug18)
@@ -466,8 +465,8 @@ lapply(seq(as.Date("2018-08-06"), as.Date("2018-08-12"), by=1), plot_return_hist
 
 
 #Create daily histograms of returns without breakdown
-setwd("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/aug_2018_id_mw/gif")
-fig_path <- file.path("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/aug_2018_id_mw/gif")
+setwd("~/Code/reader-retention-data-exploration/figures/return_histograms/aug_2018_id_mw/gif")
+fig_path <- file.path("~/Code/reader-retention-data-exploration/figures/return_histograms/aug_2018_id_mw/gif")
 
 lapply(seq(as.Date("2018-08-06"), as.Date("2018-08-12"), by=1), plot_return_histograms, df =id_return_frequency_Aug18_mw)
 
@@ -495,8 +494,8 @@ lapply(seq(as.Date("2018-08-01"), as.Date("2018-08-07"), by=1), plot_return_hist
 
 
 #Create daily histograms of returns without breakdown
-setwd("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/aug_2018_fr/gif")
-fig_path <- file.path("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/aug_2018_fr/gif")
+setwd("~/Code/reader-retention-data-exploration/figures/return_histograms/aug_2018_fr/gif")
+fig_path <- file.path("~/Code/reader-retention-data-exploration/figures/return_histograms/aug_2018_fr/gif")
 
 lapply(seq(as.Date("2018-08-01"), as.Date("2018-08-07"), by=1), plot_return_histograms, df =fr_return_frequency_Aug18)
 
@@ -539,8 +538,8 @@ lapply(seq(as.Date("2018-08-11"), as.Date("2018-08-17"), by=1), plot_return_hist
 
 
 #Create daily histograms of returns without breakdown
-setwd("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/aug_2018_in/gif")
-fig_path <- file.path("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/aug_2018_in/gif")
+setwd("~/Code/reader-retention-data-exploration/figures/return_histograms/aug_2018_in/gif")
+fig_path <- file.path("~/Code/reader-retention-data-exploration/figures/return_histograms/aug_2018_in/gif")
 
 lapply(seq(as.Date("2018-08-11"), as.Date("2018-08-17"), by=1), plot_return_histograms, df =in_return_frequency_Aug18)
 
@@ -569,8 +568,8 @@ lapply(seq(as.Date("2018-08-07"), as.Date("2018-08-13"), by=1), plot_return_hist
 
 
 #Create daily histograms of returns without breakdown
-setwd("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/aug_2018_jp/gif")
-fig_path <- file.path("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/aug_2018_jp/gif")
+setwd("~/Code/reader-retention-data-exploration/figures/return_histograms/aug_2018_jp/gif")
+fig_path <- file.path("~/Code/reader-retention-data-exploration/figures/return_histograms/aug_2018_jp/gif")
 
 lapply(seq(as.Date("2018-08-07"), as.Date("2018-08-13"), by=1), plot_return_histograms, df =jp_return_frequency_Aug18)
 
@@ -591,21 +590,43 @@ es_return_frequency_Aug18 <- rbind(readr::read_rds("data/es_return_frequency_Aug
 
 #generate histograms by various dates aroud spike date.
 
-lapply(seq(as.Date("2018-08-07"), as.Date("2018-08-13"), by=1), plot_return_histograms_mainpages, df =es_return_frequency_Aug18, fill_var = "is_main_page")
-lapply(seq(as.Date("2018-08-07"), as.Date("2018-08-13"), by=1), plot_return_histograms_breakdown, df =es_return_frequency_Aug18, fill_var = "os_family")
-lapply(seq(as.Date("2018-08-07"), as.Date("2018-08-13"), by=1), plot_return_histograms_breakdown, df =es_return_frequency_Aug18 , fill_var = "browser_family")
+
 
 #Create daily histograms of returns without breakdown
-setwd("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/aug_2018_es/gif")
-fig_path <- file.path("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/aug_2018_es/gif")
+setwd("~/Code/reader-retention-data-exploration/figures/return_histograms/aug_2018_es/total")
+fig_path <- file.path("~/Code/reader-retention-data-exploration/figures/return_histograms/aug_2018_es/total")
 
 lapply(seq(as.Date("2018-08-07"), as.Date("2018-08-13"), by=1), plot_return_histograms, df =es_return_frequency_Aug18)
 
+#Create animated gif to show changes in histograms.
+system("convert -delay 80 *.png aug_2018_es.gif")
+
+#breakdown by os family
+setwd("~/Code/reader-retention-data-exploration/figures/return_histograms/aug_2018_es/os_family")
+fig_path <- file.path("~/Code/reader-retention-data-exploration/figures/return_histograms/aug_2018_es/os_family")
+
+lapply(seq(as.Date("2018-08-07"), as.Date("2018-08-13"), by=1), plot_return_histograms_breakdown, df =es_return_frequency_Aug18, fill_var = "os_family")
 
 #Create animated gif to show changes in histograms.
-# convert the .png files to one .gif file using ImageMagick.
+system("convert -delay 80 *.png aug_2018_es_byos.gif")
 
-system("convert -delay 80 *.png aug_2018_es.gif")
+#breakdown by browser family
+setwd("~/Code/reader-retention-data-exploration/figures/return_histograms/aug_2018_es/browser_family")
+fig_path <- file.path("~/Code/reader-retention-data-exploration/figures/return_histograms/aug_2018_es/browser_family")
+
+lapply(seq(as.Date("2018-08-07"), as.Date("2018-08-13"), by=1), plot_return_histograms_breakdown, df =es_return_frequency_Aug18 , fill_var = "browser_family")
+
+#Create animated gif to show changes in histograms.
+system("convert -delay 80 *.png aug_2018_es_bybrowser.gif")
+
+#breakdown by main page
+setwd("~/Code/reader-retention-data-exploration/figures/return_histograms/aug_2018_es/is_main_page")
+fig_path <- file.path("~/Code/reader-retention-data-exploration/figures/return_histograms/aug_2018_es/is_main_page")
+
+lapply(seq(as.Date("2018-08-07"), as.Date("2018-08-13"), by=1), plot_return_histograms_breakdown, df =es_return_frequency_Aug18 , fill_var = "is_main_page")
+
+#Create animated gif to show changes in histograms.
+system("convert -delay 80 *.png aug_2018_es_bymainpage.gif")
 
 #Generate histograms of daily return time around external events
 #Page preview rollout on English Wikipedia on April 18, 2018
@@ -627,8 +648,8 @@ lapply(seq(as.Date("2018-04-12"), as.Date("2018-04-22"), by=1), plot_return_hist
 lapply(seq(as.Date("2018-04-12"), as.Date("2018-04-22"), by=1), plot_return_histograms_breakdown, df =enwikipedia_return_frequency_Apr18 , fill_var = "browser_family")
 
 #Create daily histograms of returns without breakdown
-setwd("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/apr_2018_enwikipedia/gif")
-fig_path <- file.path("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/apr_2018_enwikipedia/gif")
+setwd("~/Code/reader-retention-data-exploration/figures/return_histograms/apr_2018_enwikipedia/gif")
+fig_path <- file.path("~/Code/reader-retention-data-exploration/figures/return_histograms/apr_2018_enwikipedia/gif")
 
 
 lapply(seq(as.Date("2018-04-12"), as.Date("2018-04-22"), by=1), plot_return_histograms, df =enwikipedia_return_frequency_Apr18)
@@ -648,26 +669,10 @@ ao_return_frequency_Jun18 <- rbind(readr::read_rds("data/ao_return_frequency_Jun
                 os_family = ifelse(os_family %in% c('Android', 'Windows', 'iOS', 'Mac OS X', 'Windows Phone'), os_family, 'Other'),
                 browser_family=ifelse(browser_family %in% c('Chrome Mobile', 'Chrome', 'Android', 'Samsung Internet', 'Mobile Safari', 'Opera Mini'), browser_family, 'Other')) 
 
-plot_return_histograms_breakdown <- function(date_var,df,fill_var) #where x is date and y is the breakout group
-{
-  temp_plot = ggplot(subset(df, date == date_var)) + 
-    geom_bar(aes_string(x="days_till_next_access", y= "returns_each_day/sum(returns_each_day)", fill = fill_var), 
-             stat = "identity") +
-    scale_y_continuous("Returns each day", labels = percent, limits = c(0 , 0.40)) +
-    scale_x_continuous("Days until next access", breaks=seq(1,31,1))  +
-    labs(title = paste("Days until next access for", date_var, "\n on mobile web from Angola on all Wikipedia projects by",fill_var))  +
-    wmf::theme_min() +
-    theme(plot.title=element_text(hjust=0.5)) +
-    theme(plot.subtitle=element_text(hjust=0.5))
-  
-  ggsave(filename=paste0(fill_var,"_return_histogram",date_var,".png"), plot = temp_plot, path = fig_path, units = "in", dpi = 192, height = 6, width = 10, limitsize = FALSE)  
-  
-}
-
 #generate histograms of various dates aroud spike date.
 #breakdown by os family
-setwd("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/june_2018_ao/os_family")
-fig_path <- file.path("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/june_2018_ao/os_family")
+setwd("~/Code/reader-retention-data-exploration/figures/return_histograms/june_2018_ao/os_family")
+fig_path <- file.path("~/Code/reader-retention-data-exploration/figures/return_histograms/june_2018_ao/os_family")
 
 lapply(seq(as.Date("2018-06-24"), as.Date("2018-07-04"), by=1), plot_return_histograms_breakdown, df =ao_return_frequency_Jun18, fill_var = "os_family")
 
@@ -675,8 +680,8 @@ lapply(seq(as.Date("2018-06-24"), as.Date("2018-07-04"), by=1), plot_return_hist
 system("convert -delay 80 *.png june_2018_ao_byos.gif")
 
 #breakdown by browser family
-setwd("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/june_2018_ao/browser_family")
-fig_path <- file.path("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/june_2018_ao/browser_family")
+setwd("~/Code/reader-retention-data-exploration/figures/return_histograms/june_2018_ao/browser_family")
+fig_path <- file.path("~/Code/reader-retention-data-exploration/figures/return_histograms/june_2018_ao/browser_family")
 
 lapply(seq(as.Date("2018-06-24"), as.Date("2018-07-04"), by=1), plot_return_histograms_breakdown, df =ao_return_frequency_Jun18 , fill_var = "browser_family")
 
@@ -684,8 +689,8 @@ lapply(seq(as.Date("2018-06-24"), as.Date("2018-07-04"), by=1), plot_return_hist
 system("convert -delay 80 *.png june_2018_ao_bybrowser.gif")
 
 #Create daily histograms of returns without breakdown
-setwd("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/june_2018_ao/total")
-fig_path <- file.path("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/june_2018_ao/total")
+setwd("~/Code/reader-retention-data-exploration/figures/return_histograms/june_2018_ao/total")
+fig_path <- file.path("~/Code/reader-retention-data-exploration/figures/return_histograms/june_2018_ao/total")
 
 
 lapply(seq(as.Date("2018-06-24"), as.Date("2018-07-04"), by=1), plot_return_histograms, df =ao_return_frequency_Jun18)
@@ -702,26 +707,10 @@ sn_return_frequency_Feb18 <- rbind(readr::read_rds("data/sn_return_frequency_Feb
                 os_family = ifelse(os_family %in% c('Android', 'Windows Phone', 'iOS', 'Firefox', 'BlackBerry OS'), os_family, 'Other'),
                 browser_family=ifelse(browser_family %in% c('Chrome Mobile', 'Chrome', 'Android', 'Chrome', 'IE Mobile', 'Chrome Mobile iOS', 'Firefox Mobile'), browser_family, 'Other')) 
 
-plot_return_histograms_breakdown <- function(date_var,df,fill_var) #where x is date and y is the breakout group
-{
-  temp_plot = ggplot(subset(df, date == date_var)) + 
-    geom_bar(aes_string(x="days_till_next_access", y= "returns_each_day/sum(returns_each_day)", fill = fill_var), 
-             stat = "identity") +
-    scale_y_continuous("Returns each day", labels = percent, limits = c(0 , 0.40)) +
-    scale_x_continuous("Days until next access", breaks=seq(1,31,1))  +
-    labs(title = paste("Days until next access for", date_var, "\n on mobile web from Senegal on all Wikipedia projects by",fill_var))  +
-    wmf::theme_min() +
-    theme(plot.title=element_text(hjust=0.5)) +
-    theme(plot.subtitle=element_text(hjust=0.5))
-  
-  ggsave(filename=paste0(fill_var,"_return_histogram",date_var,".png"), plot = temp_plot, path = fig_path, units = "in", dpi = 192, height = 6, width = 10, limitsize = FALSE)  
-  
-}
-
 #generate histograms of various dates aroud spike date.
 #breakdown by os family
-setwd("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/feb_2018_sn/os_family")
-fig_path <- file.path("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/feb_2018_sn/os_family")
+setwd("~/Code/reader-retention-data-exploration/figures/return_histograms/feb_2018_sn/os_family")
+fig_path <- file.path("~/Code/reader-retention-data-exploration/figures/return_histograms/feb_2018_sn/os_family")
 
 lapply(seq(as.Date("2018-02-03"), as.Date("2018-02-11"), by=1), plot_return_histograms_breakdown, df =sn_return_frequency_Feb18, fill_var = "os_family")
 
@@ -729,8 +718,8 @@ lapply(seq(as.Date("2018-02-03"), as.Date("2018-02-11"), by=1), plot_return_hist
 system("convert -delay 80 *.png feb_2018_sn_byos.gif")
 
 #breakdown by browser family
-setwd("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/feb_2018_sn/browser_family")
-fig_path <- file.path("~/Code/new-reader-retention-metric-analysis/figures/return_histograms/feb_2018_sn/browser_family")
+setwd("~/Code/reader-retention-data-exploration/figures/return_histograms/feb_2018_sn/browser_family")
+fig_path <- file.path("~/Code/reader-retention-data-exploration/figures/return_histograms/feb_2018_sn/browser_family")
 
 lapply(seq(as.Date("2018-02-03"), as.Date("2018-02-11"), by=1), plot_return_histograms_breakdown, df =sn_return_frequency_Feb18 , fill_var = "browser_family")
 

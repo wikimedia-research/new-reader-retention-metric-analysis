@@ -46,7 +46,7 @@ plot_31day_returns_bycountry <- function(x) {
   p <- ggplot(subset(user_returns_31days_bycountry, country == x), aes(x = last_seen_date, y = avg_days_till_next_access, color = access_method)) +
     geom_line() + 
     scale_y_continuous("Average number of days until next access", labels = polloi::compress) +
-    scale_x_date("Last access date", labels = (date_format("%Y-%m-%d"), date_breaks = "1 month")  +
+    scale_x_date("Last access date", labels = date_format("%Y-%m-%d"), date_breaks = "1 month") +
     labs(title = paste("Average user returns within 31 days on all Wikipedia projects from", x)) +
     ggthemes::theme_tufte(base_size = 12, base_family = "Gill Sans") +
     theme(axis.text.x=element_text(angle = 45, hjust = 1),
@@ -76,7 +76,7 @@ plot_31day_returns_bycountry("Indonesia")
 avg_returns_desktop_1month <- user_returns_31days_bycountry %>%
   filter(country %in% (largewikicountries),
          access_method == 'desktop',
-         last_seen_date >= "2018-02-01" & last_seen_date <= "2018-03-01")  %>%
+         last_seen_date >= "2018-02-01" & last_seen_date <= "2018-02-26")  %>%
   arrange(last_seen_date)
 
 
